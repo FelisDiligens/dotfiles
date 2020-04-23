@@ -44,7 +44,7 @@ if [ $XDG_CURRENT_DESKTOP = 'KDE' -o $DESKTOP_SESSION = 'plasma' ]; then
     alias explorer="dolphin"
 fi
 
-if [ $XDG_CURRENT_DESKTOP = 'GNOME' -o $DESKTOP_SESSION = 'gnome' ]; then
+if [ $XDG_CURRENT_DESKTOP = 'ubuntu:GNOME' -o $XDG_CURRENT_DESKTOP = 'GNOME' -o $DESKTOP_SESSION = 'gnome' ]; then
     alias calc="gnome-calculator &"
     alias cmd="gnome-terminal"
     alias notepad="gedit"
