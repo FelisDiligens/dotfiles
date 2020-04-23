@@ -2,7 +2,7 @@
 
 # Enable color by default:
 alias ls='ls --color=auto'
-alias dir='dir --color=auto'
+#alias dir='dir --color=auto'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -20,13 +20,13 @@ alias rd='rmdir'
 
 # Windows aliases:
 alias cls="clear"
-alias dir="ls -Al"
+alias dir="ls -al --color=auto"
 alias explorer="xdg-open"
-#alias copy="cp"
-#alias move="mv"
-#alias ren='mv'
+alias copy="cp"
+alias move="mv"
+alias ren='mv'
 alias del="rm"
-#alias ver="lsb_release -a"
+alias ver="lsb_release -a"
 
 if [ -x "$(command -v ifconfig)" ]; then
     alias ipconfig="ifconfig && iwconfig"
@@ -52,7 +52,7 @@ if [ $XDG_CURRENT_DESKTOP = 'GNOME' -o $DESKTOP_SESSION = 'gnome' ]; then
 fi
 
 if [ $XDG_CURRENT_DESKTOP = 'XFCE' -o $DESKTOP_SESSION = 'xfce' ]; then
-    #alias calc="galculator &"
+    alias calc="galculator &"
     alias cmd="xfce4-terminal"
     alias notepad="mousepad"
     alias explorer="thunar"
