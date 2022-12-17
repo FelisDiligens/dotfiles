@@ -10,8 +10,8 @@ alias egrep='egrep --color=auto'
 
 
 # Typical aliases:
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -alFh --group-directories-first'
+alias la='ls -A --group-directories-first'
 alias l='ls -CF'
 
 alias md='mkdir'
