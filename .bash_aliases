@@ -21,6 +21,7 @@ alias rd='rmdir'
 # Git aliases:
 alias gcl="git clone"
 alias gs="git status"
+alias gd="git diff"
 alias ga="git add"
 alias gall="git add -A"
 alias gcm="git commit -m"
