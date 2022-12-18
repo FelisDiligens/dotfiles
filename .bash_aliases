@@ -18,6 +18,15 @@ alias md='mkdir'
 alias rd='rmdir'
 
 
+# Git aliases:
+alias gcl="git clone"
+alias gs="git status"
+alias ga="git add"
+alias gall="git add -A"
+alias gcm="git commit -m"
+alias gp="git push"
+
+
 # Windows aliases:
 alias cls="clear"
 alias dir="ls -al --color=auto"
