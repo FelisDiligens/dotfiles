@@ -25,7 +25,10 @@ alias gd="git diff"
 alias ga="git add"
 alias gall="git add -A"
 alias gcm="git commit -m"
+alias gac="git add -A && git commit -m" # + commit message
 alias gp="git push"
+alias gl="git pull"
+alias gm="git merge"
 
 
 # Windows aliases:
