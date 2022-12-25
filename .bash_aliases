@@ -31,6 +31,10 @@ alias gl="git pull"
 alias gm="git merge"
 
 
+# Some others:
+alias vim="vi"
+
+
 # Windows aliases:
 alias cls="clear"
 alias dir="ls -al --color=auto"
