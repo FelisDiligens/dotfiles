@@ -31,8 +31,8 @@ alias gl="git pull"
 alias gm="git merge"
 
 
-# Some others:
-alias vim="vi"
+# Cygwin specific:
+# alias apt="apt-cyg"
 
 
 # Windows aliases:
