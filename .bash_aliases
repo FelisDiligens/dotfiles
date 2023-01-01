@@ -37,43 +37,28 @@ alias gm="git merge"
 
 # Windows aliases:
 alias cls="clear"
-alias dir="ls -al --color=auto"
-alias explorer="xdg-open"
 alias copy="cp"
 alias move="mv"
 alias ren='mv'
 alias del="rm"
-alias ver="lsb_release -a"
+alias chdir="cd"
 
-if [ -x "$(command -v ifconfig)" ]; then
-    alias ipconfig="ifconfig && iwconfig"
-elif [ -x "$(command -v ip)" ]; then
-    alias ipconfig="ip a"
-else
-    alias ipconfig="hostname -I"
-fi
 
-# https://unix.stackexchange.com/questions/116539/how-to-detect-the-desktop-environment-in-a-bash-script
-if [ $XDG_CURRENT_DESKTOP = 'KDE' -o $DESKTOP_SESSION = 'plasma' ]; then
-    alias calc="kcalc &"
-    alias cmd="konsole"
-    alias notepad="kate"
-    alias explorer="dolphin"
-fi
+# mkdir & chdir:
+# Source: https://unix.stackexchange.com/a/125386
+mcd ()
+{
+    mkdir -p -- "$1" &&
+       cd -P -- "$1"
+}
 
-if [ $XDG_CURRENT_DESKTOP = 'ubuntu:GNOME' -o $XDG_CURRENT_DESKTOP = 'GNOME' -o $DESKTOP_SESSION = 'gnome' ]; then
-    alias calc="gnome-calculator &"
-    alias cmd="gnome-terminal"
-    alias notepad="gedit"
-    alias explorer="nautilus"
-fi
 
-if [ $XDG_CURRENT_DESKTOP = 'XFCE' -o $DESKTOP_SESSION = 'xfce' ]; then
-    alias calc="galculator &"
-    alias cmd="xfce4-terminal"
-    alias notepad="mousepad"
-    alias explorer="thunar"
-fi
+# Cygwin: cd using a Windows-style path
+# Usage: wcd "C:\Users\user\Downloads"
+# wcd ()
+# {
+#     cd $(cygpath -u "$1")
+# }
 
 
 # This function emulates the "START" command found in Windows' CMD.exe:
