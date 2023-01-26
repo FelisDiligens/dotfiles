@@ -1,3 +1,5 @@
 #!/bin/bash
 # Sometimes required if .bashrc isn't loaded
-. ~/.bashrc
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
