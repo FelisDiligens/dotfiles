@@ -53,14 +53,6 @@ mcd ()
 }
 
 
-# Cygwin: cd using a Windows-style path
-# Usage: wcd "C:\Users\user\Downloads"
-# wcd ()
-# {
-#     cd $(cygpath -u "$1")
-# }
-
-
 # This function emulates the "START" command found in Windows' CMD.exe:
 function start {
 	local cmd=""
