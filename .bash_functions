@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # mkdir & chdir:
 # Source: https://unix.stackexchange.com/a/125386
 mcd ()
