@@ -1,0 +1,11 @@
+ThemeFile=github
+Font=Fira Code Retina
+FontHeight=12
+FontWeight=450
+Locale=de_DE
+Charset=UTF-8
+CtrlShiftShortcuts=yes
+Columns=120
+Rows=30
+CursorType=block
+Padding=8
