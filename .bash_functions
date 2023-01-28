@@ -18,3 +18,9 @@ function start {
 	done
 	eval $cmd &>/dev/null &
 }
+
+# Sadly, doesn't work
+#function bash-reload {
+#    # https://stackoverflow.com/questions/2518127/how-to-reload-bashrc-settings-without-logging-out-and-back-in-again
+#    history -a && exec env -i HOME="$HOME" "$BASH" -l
+#}
