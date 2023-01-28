@@ -18,21 +18,35 @@ alias md='mkdir'
 alias rd='rmdir'
 
 
+# Miscellaneous aliases:
+if [ -x "$(command -v vim)" ]; then
+    alias vi=vim
+fi
+
+
 # Git aliases:
-alias gcl="git clone"
-alias gs="git status"
-alias gd="git diff"
-alias ga="git add"
-alias gall="git add -A"
-alias gcm="git commit -m"
-alias gac="git add -A && git commit -m" # + commit message
-alias gp="git push"
-alias gl="git pull"
-alias gm="git merge"
+if [ -x "$(command -v git)" ]; then
+    alias gcl="git clone"
+    alias gs="git status"
+    alias gd="git diff"
+    alias ga="git add"
+    alias gall="git add -A"
+    alias gcm="git commit -m"
+    alias gac="git add -A && git commit -m" # + commit message
+    alias gp="git push"
+    alias gl="git pull"
+    alias gm="git merge"
+fi
 
 
-# Cygwin specific:
-# alias apt="apt-cyg"
+# Cygwin/MSYS specific:
+if [ "${OSTYPE}" == "cygwin" ] || [ "${OSTYPE}" == "msys" ]; then
+    if [ -x "$(command -v apt-cyg)" ]; then
+        alias apt="apt-cyg"
+    fi
+    
+    alias psh="powershell"
+fi
 
 
 # Windows aliases:
