@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -7,9 +9,15 @@ if [ -f ~/.bash_functions ]; then
 fi
 
 if [ "${OSTYPE}" == "cygwin" ] || [ "${OSTYPE}" == "msys" ]; then
-    #     Window title                      Command prompt
-    #     |----------|            |-------------------------------|
-    PS1="\[\e]0;\W\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\n\$ "
+    if [ "$(isadmin)" == "admin" ]; then
+        #     Window title                      Command prompt
+        #     |----------|            |------------------------------|
+        PS1="\[\e]0;\W\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\n# "
+    else
+        #     Window title                      Command prompt
+        #     |----------|            |-------------------------------|
+        PS1="\[\e]0;\W\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\n\$ "
+    fi
 else
     #        Window title                       Command prompt
     #     |----------------|          |-------------------------------|
