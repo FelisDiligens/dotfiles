@@ -45,6 +45,7 @@ if [ "${OSTYPE}" == "cygwin" ] || [ "${OSTYPE}" == "msys" ]; then
         alias apt="apt-cyg"
     fi
     
+    alias xdg-open="explorer"
     alias psh="powershell"
 fi
 
