@@ -24,3 +24,14 @@ function start {
 #    # https://stackoverflow.com/questions/2518127/how-to-reload-bashrc-settings-without-logging-out-and-back-in-again
 #    history -a && exec env -i HOME="$HOME" "$BASH" -l
 #}
+
+if [ "${OSTYPE}" == "cygwin" ] || [ "${OSTYPE}" == "msys" ]; then
+	# Bash on Windows: Check admin rights
+	# Source: https://superuser.com/questions/660191/how-to-check-if-cygwin-mintty-bash-is-run-as-administrator
+	function isadmin()
+	{
+		net session > /dev/null 2>&1
+		if [ $? -eq 0 ]; then echo "admin"
+		else echo "user"; fi
+	}
+fi
