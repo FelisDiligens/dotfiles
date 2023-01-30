@@ -27,7 +27,7 @@ function start {
 
 case "$(uname -sr)" in
     Linux*WSL2*)
-		wcd ()
+		function wcd ()
 		{
 			# Requires wslpath and php: https://github.com/laurent22/wslpath
 			cd $(wslpath -u "$1")
