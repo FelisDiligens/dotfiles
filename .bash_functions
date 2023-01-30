@@ -25,6 +25,16 @@ function start {
 #    history -a && exec env -i HOME="$HOME" "$BASH" -l
 #}
 
+case "$(uname -sr)" in
+    Linux*WSL2*)
+		wcd ()
+		{
+			# Requires wslpath and php: https://github.com/laurent22/wslpath
+			cd $(wslpath -u "$1")
+		}
+	;;
+esac
+
 if [ "${OSTYPE}" == "cygwin" ] || [ "${OSTYPE}" == "msys" ]; then
 	# Bash on Windows: Check admin rights
 	# Source: https://superuser.com/questions/660191/how-to-check-if-cygwin-mintty-bash-is-run-as-administrator
