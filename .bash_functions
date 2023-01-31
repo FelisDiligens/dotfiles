@@ -37,7 +37,6 @@ case "$(uname -sr)" in
 		function wcd ()
 		{
 			# Requires wslpath and php: https://github.com/laurent22/wslpath
-			# Only convert path with wslpath if necessary:
 			if [ -d "$1" ]; then
 				cd "$1"
 			else
