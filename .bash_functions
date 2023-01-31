@@ -16,7 +16,14 @@ function start {
 		cmd="$cmd $1"
 		shift
 	done
-	eval $cmd &>/dev/null &
+
+	# eval $cmd &>/dev/null &
+	# eval $cmd >/dev/null 2>&1 &
+	# nohup $cmd &
+
+	# https://www.reddit.com/r/bash/comments/sh80cm/better_way_to_suppress_ampersand_output/
+	# It works, but looks disgusting, lol:
+	$(eval $cmd &>/dev/null &) &>/dev/null
 }
 
 # Sadly, doesn't work
@@ -30,7 +37,18 @@ case "$(uname -sr)" in
 		function wcd ()
 		{
 			# Requires wslpath and php: https://github.com/laurent22/wslpath
-			cd $(wslpath -u "$1")
+			# Only convert path with wslpath if necessary:
+			if [ -d "$1" ]; then
+				cd "$1"
+			else
+				cd $(wslpath -u "$1")
+			fi
+		}
+	;;
+	CYGWIN*)
+		function wcd ()
+		{
+		    cd $(cygpath -u "$1")
 		}
 	;;
 esac
