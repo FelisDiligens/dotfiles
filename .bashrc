@@ -8,7 +8,7 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-# Set shell prompt depending on platform:
+
 case "$(uname -sr)" in
     Linux*WSL2*)
         PS1="\[\e]0;WSL: \W\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\n\$ "
@@ -26,3 +26,7 @@ case "$(uname -sr)" in
         PS1="\[\e]0;\u@\h \W\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\n\$ "
         ;;
 esac
+
+if [ -x "$(command -v starship)" ]; then
+    eval "$(starship init bash)"
+fi
