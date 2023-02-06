@@ -2,7 +2,7 @@
 
 # History
 HISTCONTROL=ignoredups
-shopt -u histappend
+shopt -s histappend
 HISTSIZE=500
 HISTFILESIZE=500
 
