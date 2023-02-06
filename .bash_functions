@@ -44,7 +44,7 @@ case "$(uname -sr)" in
             fi
         }
     ;;
-    CYGWIN*)
+    CYGWIN*|MINGW*|MINGW32*|MSYS*)
         function wcd ()
         {
             cd $(cygpath -u "$1")
