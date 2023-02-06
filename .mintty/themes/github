@@ -1,0 +1,22 @@
+# Theme: GitHub Dark
+
+BackgroundColour=16,18,22
+ForegroundColour=139,148,158
+CursorColour=201,209,217
+# SelectionBackground=59,80,112
+Black=0,0,0
+BoldBlack=77,77,77
+Blue=108,164,248
+BoldBlue=108,164,248
+Cyan=43,116,137
+BoldCyan=43,116,137
+Green=86,211,100
+BoldGreen=86,211,100
+Magenta=219,97,162
+BoldMagenta=219,97,162
+Red=247,129,102
+BoldRed=247,129,102
+White=255,255,255
+BoldWhite=255,255,255
+Yellow=227,179,65
+BoldYellow=227,179,65

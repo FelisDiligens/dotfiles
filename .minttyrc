@@ -1,5 +1,5 @@
-ThemeFile=github
-Font=Fira Code Retina
+ThemeFile=lovelace
+Font=FiraCode NF
 FontHeight=12
 FontWeight=450
 Locale=de_DE
