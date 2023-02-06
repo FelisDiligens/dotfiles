@@ -39,15 +39,23 @@ if [ -x "$(command -v git)" ]; then
 fi
 
 
-# Cygwin/MSYS specific:
-if [ "${OSTYPE}" == "cygwin" ] || [ "${OSTYPE}" == "msys" ]; then
-    if [ -x "$(command -v apt-cyg)" ]; then
-        alias apt="apt-cyg"
-    fi
-    
-    alias xdg-open="explorer"
-    alias psh="powershell"
-fi
+case "$(uname -sr)" in
+    # WSL specific:
+    Linux*WSL2*)
+        if [ -x "$(command -v wsl-open)" ]; then
+            alias xdg-open="wsl-open"
+        fi
+    ;;
+    # Cygwin/MSYS specific:
+    CYGWIN*|MINGW*|MSYS*)
+        if [ -x "$(command -v apt-cyg)" ]; then
+            alias apt="apt-cyg"
+        fi
+        
+        alias xdg-open="explorer"
+        alias psh="powershell"
+    ;;
+esac
 
 
 # Windows aliases:
