@@ -1,0 +1,22 @@
+# Theme: Catppuccin Mocha
+
+BackgroundColour=30,30,46
+ForegroundColour=205,214,244
+CursorColour=245,224,220
+# SelectionBackground=88,91,112
+Black=69,71,90
+BoldBlack=88,91,112
+Blue=137,180,250
+BoldBlue=137,180,250
+Cyan=148,226,213
+BoldCyan=148,226,213
+Green=166,227,161
+BoldGreen=166,227,161
+Magenta=245,194,231
+BoldMagenta=245,194,231
+Red=243,139,168
+BoldRed=243,139,168
+White=186,194,222
+BoldWhite=166,173,200
+Yellow=249,226,175
+BoldYellow=249,226,175
