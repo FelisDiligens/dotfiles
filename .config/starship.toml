@@ -65,6 +65,7 @@ Raspbian = " "
 Linux = " "
 Windows = " "
 Macos = " "
+Android = " "
 
 [directory]
 style = "bg:#DA627D"
