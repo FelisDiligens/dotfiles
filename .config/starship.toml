@@ -66,6 +66,7 @@ Linux = " "
 Windows = " "
 Macos = " "
 Android = " "
+Pop=" "
 
 [directory]
 style = "bg:#DA627D"
