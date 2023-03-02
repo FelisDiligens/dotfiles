@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# PATH
+if [ -d "$HOME/.local/bin" ]; then
+    PATH=$PATH:$HOME/.local/bin
+fi
+
 # History
 HISTCONTROL=ignoredups
 shopt -s histappend
