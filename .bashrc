@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# For 'sudoedit':
+export EDITOR="vim"
+
 # PATH
 if [ -d "$HOME/.local/bin" ]; then
     PATH=$PATH:$HOME/.local/bin
