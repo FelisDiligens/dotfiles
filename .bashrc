@@ -68,9 +68,10 @@ esac
 
 # If starship (fancy shell prompt) is installed, use that instead:
 if [ -x "$(command -v starship)" ]; then
-    # Only enable starship on TTY1
     enable_starship=true
-    if [ "$(uname -s)" == "Linux" ] && [ "$(tty | sed 's/[^1-9]*//')" != "1" ]; then
+    
+    # Only enable starship on PTY (pseudo teletype)
+    if [ "$(uname -s)" == "Linux" ] && ! tty | grep -q "pts"; then
         enable_starship=false
     fi
 
