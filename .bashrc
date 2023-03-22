@@ -68,13 +68,24 @@ esac
 
 # If starship (fancy shell prompt) is installed, use that instead:
 if [ -x "$(command -v starship)" ]; then
+    # Only enable starship on TTY1
+    enable_starship=true
+    if [ "$(uname -s)" == "Linux" ] && [ "$(tty | sed 's/[^1-9]*//')" != "1" ]; then
+        enable_starship=false
+    fi
+
+    # Workaround for Cygwin
     if [ "$SHELLNAME" != "Cygwin" ]; then
         export STARSHIP_CONFIG=~/.config/starship.toml
     fi
-    function set_win_title(){
-        echo -ne "\033]0; $(basename "$PWD") \007"
-    }
-    starship_precmd_user_func="set_win_title"
 
-    eval "$(starship init bash)"
+    # Enable starship
+    if $enable_starship; then
+        function set_win_title(){
+            echo -ne "\033]0; $(basename "$PWD") \007"
+        }
+        starship_precmd_user_func="set_win_title"
+
+        eval "$(starship init bash)"
+    fi
 fi
