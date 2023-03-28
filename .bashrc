@@ -33,6 +33,11 @@ fi
 # If installed, source ble.sh (Bash Line Editor)
 if [ -f ~/.local/share/blesh/ble.sh ]; then
     source ~/.local/share/blesh/ble.sh
+
+    # ble.sh options:
+    if [ -f ~/.blesh_options.sh ]; then
+        source ~/.blesh_options.sh
+    fi
 fi
 
 

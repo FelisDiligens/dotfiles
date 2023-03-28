@@ -13,6 +13,14 @@ alias ll='ls -alFh --group-directories-first'
 alias la='ls -A --group-directories-first'
 alias l='ls -CF'
 
+# exa (https://github.com/ogham/exa)
+if [ -x "$(command -v exa)" ]; then
+    alias ls='exa --icons'
+    alias la='exa --icons --all --group-directories-first'
+    alias ll='exa --icons --all --long --header --group-directories-first'
+    alias l='exa --classify --icons'
+fi
+
 alias md='mkdir'
 alias rd='rmdir'
 
@@ -20,6 +28,22 @@ alias rd='rmdir'
 # Miscellaneous aliases:
 if [ -x "$(command -v vim)" ]; then
     alias vi=vim
+fi
+
+
+# Colored "cat"
+if [ -x "$(command -v pygmentize)" ]; then
+    alias ccat='pygmentize -g' # -O linenos=1
+fi
+
+# Another alternative
+if [ -x "$(command -v highlight)" ]; then
+    alias ccat='highlight -O ansi --line-number'
+fi
+
+# batcat -> bat (https://github.com/sharkdp/bat)
+if [ -x "$(command -v batcat)" ]; then
+    alias bat=batcat
 fi
 
 
