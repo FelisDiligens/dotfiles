@@ -30,6 +30,12 @@ if [ -f ~/.bash_functions ]; then
 fi
 
 
+# If installed, source ble.sh (Bash Line Editor)
+if [ -f ~/.local/share/blesh/ble.sh ]; then
+    source ~/.local/share/blesh/ble.sh
+fi
+
+
 # Determine SHELLNAME
 case "$(uname -sr)" in
     Linux*WSL2*) export SHELLNAME="WSL";;
