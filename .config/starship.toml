@@ -77,6 +77,8 @@ truncation_symbol = "…/"
 use_os_path_sep = false
 
 [directory.substitutions]
+"/cygdrive/c/Users/temig" = "~"
+"/cygdrive/c/Users/vboxuser" = "~"
 "/cygdrive/c/Users/temig/scoop/apps/cygwin/current/root/home/temig" = "~"
 "/home/temig" = "~"
 "Documents" = " "
