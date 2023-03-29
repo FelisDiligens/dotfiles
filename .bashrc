@@ -29,15 +29,9 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-
-# If installed, source ble.sh (Bash Line Editor)
-if [ -f ~/.local/share/blesh/ble.sh ]; then
-    source ~/.local/share/blesh/ble.sh
-
-    # ble.sh options:
-    if [ -f ~/.blesh_options.sh ]; then
-        source ~/.blesh_options.sh
-    fi
+# Source completions:
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  . /etc/bash_completion
 fi
 
 
@@ -56,6 +50,14 @@ case "$(uname -sr)" in
     MINGW*|MINGW32*|MSYS*) export SHELLNAME="MSYS2";;
     *) export SHELLNAME="$(uname -o)";;
 esac
+
+
+# Determine TELETYPE and TELETYPE_NUMBER
+TELETYPE="PTY"
+if [ "$(uname -s)" == "Linux" ] && ! tty | grep -q "pts"; then
+    TELETYPE="TTY"
+fi
+TELETYPE_NUMBER=$(tty | sed s/[^0-9]*//)
 
 
 # Configure shell prompt depending on system:
@@ -77,27 +79,32 @@ case "$(uname -sr)" in
         ;;
 esac
 
-# If starship (fancy shell prompt) is installed, use that instead:
-if [ -x "$(command -v starship)" ]; then
-    enable_starship=true
-    
-    # Only enable starship on PTY (pseudo teletype)
-    if [ "$(uname -s)" == "Linux" ] && ! tty | grep -q "pts"; then
-        enable_starship=false
-    fi
 
+# If starship (fancy shell prompt) is installed, use that instead:
+# (only enable starship in interactive mode and PTY, i.e. in a terminal emulator)
+if [ -x "$(command -v starship)" ] && [[ $- == *i* ]] && [ "$TELETYPE" == "PTY" ]; then
     # Workaround for Cygwin
     if [ "$SHELLNAME" != "Cygwin" ]; then
         export STARSHIP_CONFIG=~/.config/starship.toml
     fi
 
     # Enable starship
-    if $enable_starship; then
-        function set_win_title(){
-            echo -ne "\033]0; $(basename "$PWD") \007"
-        }
-        starship_precmd_user_func="set_win_title"
+    function set_win_title(){
+        echo -ne "\033]0; $(basename "$PWD") \007"
+    }
+    starship_precmd_user_func="set_win_title"
 
-        eval "$(starship init bash)"
+    eval "$(starship init bash)"
+fi
+
+
+# If installed, source ble.sh (Bash Line Editor)
+# (only in interactive mode)
+if [[ $- == *i* ]] && [ -f ~/.local/share/blesh/ble.sh ]; then
+    source ~/.local/share/blesh/ble.sh
+
+    # ble.sh options:
+    if [ -f ~/.blesh_options.sh ]; then
+        source ~/.blesh_options.sh
     fi
 fi
