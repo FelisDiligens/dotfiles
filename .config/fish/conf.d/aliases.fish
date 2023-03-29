@@ -11,6 +11,14 @@ alias ll='ls -alFh --group-directories-first'
 alias la='ls -A --group-directories-first'
 alias l='ls -CF'
 
+# exa (https://github.com/ogham/exa)
+if command -sq exa
+    alias ls='exa --icons'
+    alias la='exa --icons --all --group-directories-first'
+    alias ll='exa --icons --all --long --header --group-directories-first'
+    alias l='exa --classify --icons'
+end
+
 alias md='mkdir'
 alias rd='rmdir'
 
@@ -29,6 +37,11 @@ end
 # Another alternative
 if command -sq highlight
     alias ccat='highlight -O ansi'
+end
+
+# batcat -> bat (https://github.com/sharkdp/bat)
+if command -sq batcat
+    alias bat=batcat
 end
 
 
