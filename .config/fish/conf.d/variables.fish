@@ -21,7 +21,9 @@ end
 
 # Determine TELETYPE and TELETYPE_NUMBER
 set TELETYPE "PTY"
-if [ "$(uname -s)" = "Linux" ] && ! tty | grep -q "pts"
-    set TELETYPE "TTY"
+if command -sq tty
+    if [ "$(uname -s)" = "Linux" ] && ! tty | grep -q "pts"
+        set TELETYPE "TTY"
+    end
+    set TELETYPE_NUMBER $(tty | sed "s/[^0-9]*//")
 end
-set TELETYPE_NUMBER $(tty | sed "s/[^0-9]*//")
