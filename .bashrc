@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# For 'sudoedit':
-export EDITOR="vim"
-
-# PATH
-if [ -d "$HOME/.local/bin" ]; then
-    PATH=$PATH:$HOME/.local/bin
-fi
-
 # History
 HISTCONTROL=ignoredups
 shopt -s histappend
@@ -18,22 +10,19 @@ HISTFILESIZE=500
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Source variables:
+[[ -f "$HOME/.bash_variables" ]] && source $HOME/.bash_variables
 
 # Source aliases:
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[[ -f "$HOME/.bash_aliases" ]] && source $HOME/.bash_aliases
 
 # Source functions:
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+[[ -f "$HOME/.bash_functions" ]] && source $HOME/.bash_functions
 
 # Source completions:
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
+    source /etc/bash_completion
 fi
-
 
 # Determine SHELLNAME
 case "$(uname -sr)" in
@@ -54,10 +43,13 @@ esac
 
 # Determine TELETYPE and TELETYPE_NUMBER
 TELETYPE="PTY"
-if [ "$(uname -s)" == "Linux" ] && ! tty | grep -q "pts"; then
-    TELETYPE="TTY"
+TELETYPE_NUMBER=0
+if [ -x "$(command -v tty)" ]; then
+    if [ "$(uname -s)" == "Linux" ] && ! tty | grep -q "pts"; then
+        TELETYPE="TTY"
+    fi
+    TELETYPE_NUMBER=$(tty | sed s/[^0-9]*//)
 fi
-TELETYPE_NUMBER=$(tty | sed s/[^0-9]*//)
 
 
 # Configure shell prompt depending on system:
