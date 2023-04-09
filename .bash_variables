@@ -27,3 +27,7 @@ fi
 
 # Cargo (Rust)
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# Ruby Gems
+# https://stackoverflow.com/a/51012973
+export GEM_HOME="$HOME/.gem"
