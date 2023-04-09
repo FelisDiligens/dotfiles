@@ -31,3 +31,4 @@ fi
 # Ruby Gems
 # https://stackoverflow.com/a/51012973
 export GEM_HOME="$HOME/.gem"
+[[ -d "$HOME/.gem/bin" ]] && export PATH=$PATH:$HOME/.gem/bin
