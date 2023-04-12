@@ -17,6 +17,7 @@ if command -sq exa
     alias la='exa --icons --all --group-directories-first'
     alias ll='exa --icons --all --long --header --group-directories-first'
     alias l='exa --classify --icons'
+    alias tree='exa --icons --tree'
 end
 
 alias md='mkdir'

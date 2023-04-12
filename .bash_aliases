@@ -19,6 +19,7 @@ if [ -x "$(command -v exa)" ]; then
     alias la='exa --icons --all --group-directories-first'
     alias ll='exa --icons --all --long --header --group-directories-first'
     alias l='exa --classify --icons'
+    alias tree='exa --icons --tree'
 fi
 
 alias md='mkdir'
