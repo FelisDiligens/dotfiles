@@ -27,25 +27,14 @@ alias rd='rmdir'
 
 
 # Miscellaneous aliases:
-if [ -x "$(command -v vim)" ]; then
-    alias vi=vim
-fi
-
+[ -x "$(command -v vim)" ] && alias vi=vim
+[ -x "$(command -v neowofetch)" ] && alias neofetch=neowofetch
+[ -x "$(command -v tetris-thefenriswolf.tetris)" ] && alias tetris="tetris-thefenriswolf.tetris"
 
 # Colored "cat"
-if [ -x "$(command -v pygmentize)" ]; then
-    alias ccat='pygmentize -g' # -O linenos=1
-fi
-
-# Another alternative
-if [ -x "$(command -v highlight)" ]; then
-    alias ccat='highlight -O ansi --line-number'
-fi
-
-# batcat -> bat (https://github.com/sharkdp/bat)
-if [ -x "$(command -v batcat)" ]; then
-    alias bat=batcat
-fi
+[ -x "$(command -v pygmentize)" ] && alias ccat='pygmentize -g' # -O linenos=1
+[ -x "$(command -v highlight)" ] && alias ccat='highlight -O ansi --line-number'
+[ -x "$(command -v batcat)" ] && alias bat=batcat # batcat -> bat (https://github.com/sharkdp/bat)
 
 
 # Git aliases:
