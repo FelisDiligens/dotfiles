@@ -7,7 +7,7 @@ HISTSIZE=500
 HISTFILESIZE=500
 
 # https://askubuntu.com/questions/67283/is-it-possible-to-make-writing-to-bash-history-immediate
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -90,7 +90,7 @@ if [ -x "$(command -v starship)" ] && [[ $- == *i* ]] && [ "$TELETYPE" == "PTY" 
     starship_precmd_user_func="set_win_title"
 
     eval "$(starship init bash)"
-    PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+    PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 fi
 
 
