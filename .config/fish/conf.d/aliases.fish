@@ -25,25 +25,13 @@ alias rd='rmdir'
 
 
 # Miscellaneous aliases:
-if command -sq vim
-    alias vi=vim
-end
-
+if command -sq vim; alias vi=vim; end
+if command -sq neowofetch; alias neofetch=neowofetch; end
 
 # Colored "cat"
-if command -sq pygmentize
-    alias ccat='pygmentize -g' # -O linenos=1
-end
-
-# Another alternative
-if command -sq highlight
-    alias ccat='highlight -O ansi'
-end
-
-# batcat -> bat (https://github.com/sharkdp/bat)
-if command -sq batcat
-    alias bat=batcat
-end
+if command -sq pygmentize; alias ccat='pygmentize -g'; end # -O linenos=1
+if command -sq highlight; alias ccat='highlight -O ansi'; end
+if command -sq batcat; alias bat=batcat; end # batcat -> bat (https://github.com/sharkdp/bat)
 
 
 # Git aliases:
