@@ -49,7 +49,7 @@ if command -sq git
 end
 
 
-switch "$(uname -sr)"
+switch "(uname -sr)"
     # WSL specific:
     case "Linux*WSL2*"
         if command -sq "wsl-open"
