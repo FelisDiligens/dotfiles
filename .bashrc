@@ -104,3 +104,5 @@ if [[ $- == *i* ]] && [ -f ~/.local/share/blesh/ble.sh ]; then
         source ~/.blesh_options.sh
     fi
 fi
+
+if [ -x "$(command -v pipx)" ] && eval "$(register-python-argcomplete pipx)"

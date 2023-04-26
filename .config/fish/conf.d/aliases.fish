@@ -52,8 +52,8 @@ end
 switch "(uname -sr)"
     # WSL specific:
     case "Linux*WSL2*"
-        if command -sq "wsl-open"
-            alias xdg-open="wsl-open"
+        if command -sq "wslview"
+            alias xdg-open="wslview"
         end
     # Cygwin/MSYS specific:
     case "CYGWIN*" "MINGW*" "MSYS*"

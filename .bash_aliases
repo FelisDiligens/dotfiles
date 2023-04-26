@@ -29,7 +29,6 @@ alias rd='rmdir'
 # Miscellaneous aliases:
 [ -x "$(command -v vim)" ] && alias vi=vim
 [ -x "$(command -v neowofetch)" ] && alias neofetch=neowofetch
-[ -x "$(command -v tetris-thefenriswolf.tetris)" ] && alias tetris="tetris-thefenriswolf.tetris"
 
 # Colored "cat"
 [ -x "$(command -v pygmentize)" ] && alias ccat='pygmentize -g' # -O linenos=1
@@ -55,8 +54,8 @@ fi
 case "$(uname -sr)" in
     # WSL specific:
     Linux*WSL2*)
-        if [ -x "$(command -v wsl-open)" ]; then
-            alias xdg-open="wsl-open"
+        if [ -x "$(command -v wslview)" ]; then
+            alias xdg-open="wslview"
         fi
     ;;
     # Cygwin/MSYS specific:
