@@ -105,4 +105,4 @@ if [[ $- == *i* ]] && [ -f ~/.local/share/blesh/ble.sh ]; then
     fi
 fi
 
-if [ -x "$(command -v pipx)" ] && eval "$(register-python-argcomplete pipx)"
+[[ -x "$(command -v pipx)" ]] && eval "$(register-python-argcomplete pipx)"
