@@ -109,4 +109,4 @@ fi
 [[ -x "$(command -v pipx)" ]] && eval "$(register-python-argcomplete pipx)"
 
 # If zoxide is installed, run init
-[ -x "$(command -v zoxide)" ] eval "$(zoxide init bash)"
+[[ -x "$(command -v zoxide)" ]] && eval "$(zoxide init bash)"
