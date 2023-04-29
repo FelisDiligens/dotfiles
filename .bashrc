@@ -105,4 +105,8 @@ if [[ $- == *i* ]] && [ -f ~/.local/share/blesh/ble.sh ]; then
     fi
 fi
 
+# Register pipx completions
 [[ -x "$(command -v pipx)" ]] && eval "$(register-python-argcomplete pipx)"
+
+# If zoxide is installed, run init
+[ -x "$(command -v zoxide)" ] eval "$(zoxide init bash)"

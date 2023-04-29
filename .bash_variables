@@ -2,7 +2,7 @@
 
 # For 'sudoedit':
 [ -x "$(command -v vim)" ] && export EDITOR="vim"
-[ -x "$(command -v code)" ] && export EDITOR="code"
+[ -x "$(command -v vim)" ] && export VISUAL="vim"
 
 # ~/.local/bin
 [[ -d "$HOME/.local/bin" ]] && export PATH=$PATH:$HOME/.local/bin

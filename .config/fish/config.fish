@@ -5,4 +5,9 @@ if status is-interactive
     if command -sq starship && [ "$TELETYPE" = "PTY" ]
         starship init fish | source
     end
+
+    # Enable zoxide
+    if command -sq zoxide
+        zoxide init fish | source
+    end
 end
