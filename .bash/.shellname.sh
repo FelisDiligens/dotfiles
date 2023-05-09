@@ -5,6 +5,8 @@ case "$(uname -sr)" in
     Linux*)
         if [ -x "$(command -v lsb_release)" ]; then
             export SHELLNAME="$(lsb_release -is)"
+        elif [ -f "/etc/os-release" ]; then
+            export SHELLNAME="$(cat /etc/os-release | grep -e "^NAME=" | sed 's/NAME=\"\(.*\)\"/\1/')"
         else
             export SHELLNAME="$(uname -o)"
         fi
