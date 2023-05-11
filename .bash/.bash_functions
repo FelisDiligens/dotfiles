@@ -23,7 +23,7 @@ function start {
 
     # https://www.reddit.com/r/bash/comments/sh80cm/better_way_to_suppress_ampersand_output/
     # It works, but looks disgusting, lol:
-    $(eval $cmd &>/dev/null &) &>/dev/null
+    $(eval "nohup $cmd" &>/dev/null &) &>/dev/null
 }
 
 # Sadly, doesn't work

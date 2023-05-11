@@ -6,5 +6,5 @@ function start
     #eval $cmd &>/dev/null &
 
     # https://github.com/fish-shell/fish-shell/issues/238#issuecomment-1015806466
-    fish -c (string join -- ' ' (string escape -- $argv)) &
+    nohup fish -c (string join -- ' ' (string escape -- $argv)) &>/dev/null &
 end
