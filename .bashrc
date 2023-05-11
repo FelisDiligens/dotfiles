@@ -15,16 +15,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Source everything inside of ~/.bash in alphabetical order that either starts with .bash_ or ends with .sh
-case "$(uname -sr)" in
-    CYGWIN*|MINGW*|MSYS*)
-        # Specific workaround for Cygwin when using native win32 python:
-        # Convert the path to Windows + replace "\r\n" by "\n" in output
-        [[ -f "$HOME/.bash/get_source.py" ]] && eval "$( python $( cygpath -w $HOME/.bash/get_source.py ) | dos2unix )"
-    ;;
-    *)
-        [[ -f "$HOME/.bash/get_source.py" ]] && eval "$( $HOME/.bash/get_source.py )"
-    ;;
-esac
+if [[ "$(which python3)" =~ ^/cygdrive/.*\.exe$ ]]; then
+    # Specific workaround for Cygwin when using native win32 python:
+    # Convert the path to Windows + replace "\r\n" by "\n" in output
+    [[ -f "$HOME/.bash/get_source.py" ]] && eval "$( python $( cygpath -w $HOME/.bash/get_source.py ) | dos2unix )"
+else
+    [[ -f "$HOME/.bash/get_source.py" ]] && eval "$( $HOME/.bash/get_source.py )"
+fi
 
 #str="$(find $HOME/.bash -maxdepth 1 -type f -regex '^.*/\(\.bash_.+\|.+\.sh\)$' -print | sort)"
 #arr=( $str )
