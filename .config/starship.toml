@@ -8,6 +8,7 @@ format = """
 $os\
 $shell\
 $username\
+$env_var\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
@@ -52,6 +53,13 @@ powershell_indicator = "" # 󰨊
 cmd_indicator = ""
 fish_indicator = "" # "󰈺"
 disabled = false
+
+[env_var.STARSHIP_PROMPT_ROOT]
+style = "bg:#9A348E"
+variable = "STARSHIP_PROMPT_ROOT"
+format = "[$env_value]($style)"
+default = ""
+disabled=false
 
 [os]
 style = "bg:#9A348E"
