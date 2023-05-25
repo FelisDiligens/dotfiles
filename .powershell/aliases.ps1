@@ -5,6 +5,7 @@ if (Get-Command "git" -errorAction SilentlyContinue) {
     function gd { git diff }
     function ga { git add $args }
     function gall { git add -A }
+    del alias:gcm -Force
     function gcm ([string]$commitmsg) { git commit -m "$commitmsg" }
     function gac ([string]$commitmsg) {
         git add -A
