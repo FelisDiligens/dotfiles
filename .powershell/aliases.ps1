@@ -1,17 +1,17 @@
 # Git aliases:
-if (Get-Command "git" -errorAction SilentlyContinue) {
+if (Get-Command "git" -ErrorAction SilentlyContinue) {
     function gcl ([string]$url) { git clone "$url" }
     function gs { git status }
     function gd { git diff }
     function ga { git add $args }
     function gall { git add -A }
-    del alias:gcm -Force
+    Remove-Item alias:gcm -Force -ErrorAction SilentlyContinue
     function gcm ([string]$commitmsg) { git commit -m "$commitmsg" }
     function gac ([string]$commitmsg) {
         git add -A
         git commit -m "$commitmsg"
     }
-    del alias:gp -Force
+    Remove-Item alias:gp -Force -ErrorAction SilentlyContinue
     function gp { git push }
     function gl { git pull }
     function gm { git merge }
@@ -23,7 +23,7 @@ if (Get-Command "exa.exe" -errorAction SilentlyContinue) {
 }
 
 if (Get-Command "exa" -errorAction SilentlyContinue) {
-    del alias:ls -Force
+    Remove-Item alias:ls -Force -ErrorAction SilentlyContinue
     function ls {
         exa --icons $args
     }
@@ -46,7 +46,7 @@ if (Get-Command "exa" -errorAction SilentlyContinue) {
 } else {
     # No exa?
     
-    del alias:ls -Force
+    Remove-Item alias:ls -Force -ErrorAction SilentlyContinue
     function ls {
         Get-ChildItem -Name $args
     }
