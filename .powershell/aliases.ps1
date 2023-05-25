@@ -6,7 +6,11 @@ if (Get-Command "git" -errorAction SilentlyContinue) {
     function ga { git add $args }
     function gall { git add -A }
     function gcm ([string]$commitmsg) { git commit -m "$commitmsg" }
-    function gac ([string]$commitmsg) { git add -A && git commit -m "$commitmsg" }
+    function gac ([string]$commitmsg) {
+        git add -A
+        git commit -m "$commitmsg"
+    }
+    del alias:gp -Force
     function gp { git push }
     function gl { git pull }
     function gm { git merge }
@@ -18,6 +22,7 @@ if (Get-Command "exa.exe" -errorAction SilentlyContinue) {
 }
 
 if (Get-Command "exa" -errorAction SilentlyContinue) {
+    del alias:ls -Force
     function ls {
         exa --icons $args
     }
@@ -40,6 +45,7 @@ if (Get-Command "exa" -errorAction SilentlyContinue) {
 } else {
     # No exa?
     
+    del alias:ls -Force
     function ls {
         Get-ChildItem -Name $args
     }
@@ -49,7 +55,7 @@ if (Get-Command "exa" -errorAction SilentlyContinue) {
     }
 
     function la {
-        Get-ChildItem -Force $args | foreach {
+        Get-ChildItem -Force $args | ForEach-Object {
             if ((Get-Item $_.FullName -Force) -is [System.IO.DirectoryInfo]) {
                 Write-Host " $($_.Name)"
             } else {
@@ -59,7 +65,7 @@ if (Get-Command "exa" -errorAction SilentlyContinue) {
     }
 
     function l {
-        Get-ChildItem $args | foreach {
+        Get-ChildItem $args | ForEach-Object {
             if ((Get-Item $_.FullName -Force) -is [System.IO.DirectoryInfo]) {
                 Write-Host " $($_.Name)"
             } else {
