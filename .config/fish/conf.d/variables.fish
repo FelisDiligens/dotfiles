@@ -21,6 +21,11 @@ switch "$(uname -sr)"
 end
 
 
+# Determine SHELL_PROMPT_CHAR for starship
+export SHELL_PROMPT_CHAR="\$"
+is_root && export SHELL_PROMPT_CHAR="#"
+
+
 # Determine TELETYPE and TELETYPE_NUMBER
 set TELETYPE "PTY"
 if command -sq tty

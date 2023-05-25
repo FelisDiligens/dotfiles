@@ -1,74 +1,40 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Preset: https://starship.rs/presets/pastel-powerline.html
-
 format = """
-[](#9A348E)\
+$username[@](green)$hostname \
 $os\
 $shell\
-$username\
-$env_var\
-[](bg:#DA627D fg:#9A348E)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
 $git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
-$c\
-$dotnet\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$ruby\
-$rust\
-$scala\
-[](fg:#86BBD8) """
+$cmd_duration\
+$line_break\
+$env_var """ # $character
 
-# $docker_context\
-#[](fg:#06969A bg:#33658A)\
-
-# Disable the blank line at the start of the prompt
-# add_newline = false
-
-# You can also replace your username with a neat symbol like   or disable this
-# and use the os module below
 [username]
+style_user = "green"
+style_root = "green bold"
+format = "[$user]($style)"
+disabled = false
 show_always = true
-style_user = "bg:#9A348E"
-style_root = "bg:#9A348E"
-format = '[$user ]($style)'
-disabled = true
 
-[shell]
-format = '[$indicator ]($style)'
-style = "bg:#9A348E"
-bash_indicator = ""
-powershell_indicator = "" # 󰨊
-cmd_indicator = ""
-fish_indicator = "" # "󰈺"
+[hostname]
+style = "green"
+format = '[$hostname]($style)'
+ssh_only = false
 disabled = false
 
-[env_var.STARSHIP_PROMPT_ROOT]
-style = "bg:#9A348E"
-variable = "STARSHIP_PROMPT_ROOT"
-format = "[$env_value]($style)"
-default = ""
-disabled=false
-
 [os]
-style = "bg:#9A348E"
+style = "purple"
 disabled = false
 
 [os.symbols]
 Ubuntu = " "
 Fedora = " "
-Arch = " "
 Debian = " "
 Raspbian = " "
 Linux = " "
@@ -76,18 +42,36 @@ Windows = " "
 Macos = " "
 Android = " "
 Pop=" "
+Mint = " "
+openSUSE = " "
+SUSE = " "
+Arch = " "
+Manjaro = " "
+EndeavourOS = " "
+Garuda = "﯑ "
+Gentoo = " "
+Unknown = " "
+
+[shell]
+style = "blue"
+format = '[$indicator ]($style)'
+bash_indicator = ""
+powershell_indicator = "" # 󰨊
+cmd_indicator = ""
+fish_indicator = "" # "󰈺"
+disabled = false
 
 [directory]
-style = "bg:#DA627D"
+style = "yellow"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
+read_only = " "
 use_os_path_sep = false
 
 [directory.substitutions]
 "/cygdrive/c/Users/temig" = "~"
 "/cygdrive/c/Users/vboxuser" = "~"
-"/cygdrive/c/Users/temig/scoop/apps/cygwin/current/root/home/temig" = "~"
 "/home/temig" = "~"
 "Documents" = " "
 "Dokumente" = " "
@@ -99,87 +83,16 @@ use_os_path_sep = false
 "Videos" = " "
 "OneDrive" = " " # 󰏊
 
-[c]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[dotnet]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#06969A"
-format = '[ $symbol $context ]($style) $path'
-
-[elixir]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
 [git_branch]
 symbol = ""
-style = "bg:#FCA17D"
-format = '[ $symbol $branch ]($style)'
+format = '[$symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#FCA17D"
 format = '[$all_status$ahead_behind ]($style)'
 
-[golang]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[haskell]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[julia]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nim]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[ruby]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[scala]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ ♥ $time ]($style)'
+[env_var.SHELL_PROMPT_CHAR]
+style = "white"
+variable = "SHELL_PROMPT_CHAR"
+format = "[$env_value]($style)"
+default = "$"
+disabled=false

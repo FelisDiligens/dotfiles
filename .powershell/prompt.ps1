@@ -1,25 +1,21 @@
-﻿[bool] $ISADMIN = $false
+﻿$env:SHELL_PROMPT_CHAR = "$"
+[bool] $ISADMIN = $false
 if ($IsWindows -or ($env:OS -eq "Windows_NT")) {
     # Check if elevated
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        $env:STARSHIP_PROMPT_ROOT = " "
+        $env:SHELL_PROMPT_CHAR = "#"
         [bool] $ISADMIN = $true
     }
     $SHELLNAME = "Windows"
 } elseif ($IsLinux) {
+    if ($(whoami) -eq "root") {
+        $env:SHELL_PROMPT_CHAR = "#"
+        [bool] $ISADMIN = $true
+    }
     $SHELLNAME = "Linux"
 } elseif ($IsMacOS) {
     $SHELLNAME = "macOS"
-}
-
-# Show pwd in window title
-function Invoke-Starship-PreCommand {
-    if ("$(Get-Item $pwd)" -eq "$HOME") {
-        $host.ui.RawUI.WindowTitle = "~"
-    } else {
-        $host.ui.RawUI.WindowTitle = (Get-Item $pwd).Name
-    }
 }
 
 function prompt {
@@ -35,7 +31,16 @@ function prompt {
         $FolderName = "~"
     }
     $host.ui.RawUI.WindowTitle = $FolderName
-    return "`n$green$Env:UserName@$Env:ComputerName $magenta$SHELLNAME $($blue)pwsh $yellow$FolderName$reset`n" + $(If ($ISADMIN) {"# "} Else {"$ "})
+    return "`n$green$Env:UserName@$Env:ComputerName $magenta$SHELLNAME $($blue)pwsh $yellow$FolderName$reset`n" + $env:SHELL_PROMPT_CHAR # $(If ($ISADMIN) {"# "} Else {"$ "})
+}
+
+# Show pwd in window title
+function Invoke-Starship-PreCommand {
+    if ("$(Get-Item $pwd)" -eq "$HOME") {
+        $host.ui.RawUI.WindowTitle = "~"
+    } else {
+        $host.ui.RawUI.WindowTitle = (Get-Item $pwd).Name
+    }
 }
 
 # Starship
