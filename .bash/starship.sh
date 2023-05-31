@@ -8,7 +8,11 @@ if [ -x "$(command -v starship)" ] && [[ $- == *i* ]] && [ "$TELETYPE" == "PTY" 
 
     # Enable starship
     function set_win_title(){
-        echo -ne "\033]0; $(basename "$PWD") \007"
+        if [ "$PWD" = "$HOME" ]; then
+            echo -ne "\033]0; ~ \007"
+        else
+            echo -ne "\033]0; $(basename "$PWD") \007"
+        fi
     }
     starship_precmd_user_func="set_win_title"
 
