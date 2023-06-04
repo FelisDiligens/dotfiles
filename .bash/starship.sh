@@ -1,6 +1,9 @@
 # If starship (fancy shell prompt) is installed, use that instead:
 # (only enable starship when in interactive mode and in a terminal emulator)
-if [ -x "$(command -v starship)" ] && [[ $- == *i* ]] && [ "$(tset -q)" == "xterm-256color" ]; then
+# Terminal emulators:        xterm, xterm-color, or xterm-256color
+# Linux console without GUI: linux
+# $(tset -q) or $TERM
+if [ -x "$(command -v starship)" ] && [[ $- == *i* ]] && [ "$TERM" != "linux" ]; then
     # Workaround for Cygwin
     if [ "$(uname -o)" != "Cygwin" ]; then
         export STARSHIP_CONFIG=~/.config/starship.toml
