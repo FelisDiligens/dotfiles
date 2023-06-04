@@ -65,9 +65,11 @@ case "$(uname -sr)" in
         fi
         
         alias xdg-open="explorer"
-        alias psh="powershell"
     ;;
 esac
+
+
+[ -x "$(command -v powershell)" ] && alias pwsh="powershell"
 
 
 # Windows aliases:

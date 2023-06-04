@@ -1,2 +1,2 @@
 # Register pipx completions
-[[ -x "$(command -v pipx)" ]] && eval "$(register-python-argcomplete pipx)"
+[[ -x "$(command -v pipx)" ]] && [[ "$(uname -o)" != "Cygwin" ]] && eval "$(register-python-argcomplete pipx)"
