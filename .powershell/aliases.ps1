@@ -75,13 +75,3 @@ if (Get-Command "exa" -errorAction SilentlyContinue) {
         }
     }
 }
-
-# Zoxide
-if (Get-Command "zoxide" -errorAction SilentlyContinue) {
-    Invoke-Expression (& {
-        $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-        (zoxide init --hook $hook powershell | Out-String)
-    })
-
-    # Set-Alias -Name cd -Value z -Option AllScope
-}

@@ -13,12 +13,9 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 # Set-PSReadLineOption -PredictionSource HistoryAndPlugin  # PowerShell Core
 # Set-PSReadLineOption -PredictionSource History           # Windows PowerShell 5.1
 
-# Source scripts
-. "$HOME\.powershell\aliases.ps1"
-. "$HOME\.powershell\functions.ps1"
-. "$HOME\.powershell\prompt.ps1"
-
-# gsudo (choco install gsudo)
-if (Test-Path "C:\tools\gsudo\Current\gsudoModule.psd1") {
-    Import-Module "C:\tools\gsudo\Current\gsudoModule.psd1"
+# Source all scripts under ~\.powershell, except the current one (profile.ps1)
+Get-ChildItem -Path "$HOME\.powershell\" -Filter *.ps1 | Sort-Object | ForEach-Object {
+    if ($_.FullName -ne $PSCommandPath) {
+        . $_.FullName
+    }
 }

@@ -49,17 +49,3 @@ function prompt {
     # Return formatted prompt
     return "`n$green$Env:UserName@$Env:ComputerName $magenta$SHELLNAME $($blue)pwsh $yellow$FolderName$reset`n" + $env:SHELL_PROMPT_CHAR # $(If ($ISADMIN) {"# "} Else {"$ "})
 }
-
-# Show pwd in window title when using starship
-function Invoke-Starship-PreCommand {
-    if ("$(Get-Item $pwd)" -eq "$HOME") {
-        $host.ui.RawUI.WindowTitle = "~"
-    } else {
-        $host.ui.RawUI.WindowTitle = (Get-Item $pwd).Name
-    }
-}
-
-# Use Starship if installed
-if (Get-Command "starship" -errorAction SilentlyContinue) {
-    Invoke-Expression (&starship init powershell)
-}
