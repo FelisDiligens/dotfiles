@@ -83,5 +83,5 @@ if (Get-Command "zoxide" -errorAction SilentlyContinue) {
         (zoxide init --hook $hook powershell | Out-String)
     })
 
-    Set-Alias -Name cd -Value z -Option AllScope
+    # Set-Alias -Name cd -Value z -Option AllScope
 }
