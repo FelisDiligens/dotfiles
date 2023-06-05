@@ -15,6 +15,7 @@ case "$(uname -sr)" in
         ;;
     CYGWIN*) export SHELLNAME="Cygwin";;
     MINGW*|MINGW32*|MSYS*) export SHELLNAME="MSYS2";;
+    Darwin*) export SHELLNAME="macOS";;
     *) export SHELLNAME="$(uname -o)";;
 esac
 

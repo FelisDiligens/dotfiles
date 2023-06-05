@@ -16,21 +16,13 @@ switch "$(uname -sr)"
         export SHELLNAME="Cygwin"
     case "MINGW*|MINGW32*|MSYS*"
         export SHELLNAME="MSYS2"
+    case "Darwin*"
+        export SHELLNAME="macOS"
     case "*"
         export SHELLNAME="$(uname -o)"
 end
 
 
-# Determine SHELL_PROMPT_CHAR for starship
+# Determine SHELL_PROMPT_CHAR
 export SHELL_PROMPT_CHAR="\$"
 is_root && export SHELL_PROMPT_CHAR="#"
-
-
-# Determine TELETYPE and TELETYPE_NUMBER
-set TELETYPE "PTY"
-if command -sq tty
-    if [ "$(uname -s)" = "Linux" ] && ! tty | grep -q "pts"
-        set TELETYPE "TTY"
-    end
-    set TELETYPE_NUMBER $(tty | sed "s/[^0-9]*//")
-end

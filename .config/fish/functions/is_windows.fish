@@ -1,3 +1,4 @@
 function is_windows
-    return ([ "$SHELLNAME" = "Cygwin" ] || [ "$SHELLNAME" = "MSYS2" ])
+    string match -i -r "CYGWIN*|MINGW*|MINGW32*|MSYS*" "$(uname -sr)" >/dev/null
+    return $status
 end

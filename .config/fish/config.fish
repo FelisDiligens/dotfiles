@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # Enable starship
-    if command -sq starship && [ "$TELETYPE" = "PTY" ]
+    if command -sq starship && [ "$TERM" != "linux" ]
         starship init fish | source
     end
 
