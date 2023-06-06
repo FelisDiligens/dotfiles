@@ -6,6 +6,12 @@
 # Ctrl+D to exit, Ctrl+L to clear screen, and more. Like in bash <3
 Set-PSReadlineOption -EditMode Emacs
 
+# For some reason, setting EditMode to Emacs disables Ctrl <- and ->
+# See https://github.com/PowerShell/PowerShell/issues/3038 (it's "by design")
+# At least we can manually bind these:
+Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow BackwardWord
+Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow ForwardWord
+
 # Tab completion like in fish <3
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
