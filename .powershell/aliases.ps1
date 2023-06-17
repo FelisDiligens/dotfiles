@@ -1,20 +1,21 @@
 # Git aliases:
 if (Get-Command "git" -ErrorAction SilentlyContinue) {
-    function gcl ([string]$url) { git clone "$url" }
-    function gs { git status }
-    function gd { git diff }
-    function ga { git add $args }
-    function gall { git add -A }
-    Remove-Item alias:gcm -Force -ErrorAction SilentlyContinue
-    function gcm ([string]$commitmsg) { git commit -m "$commitmsg" }
-    function gac ([string]$commitmsg) {
-        git add -A
-        git commit -m "$commitmsg"
-    }
-    Remove-Item alias:gp -Force -ErrorAction SilentlyContinue
-    function gp { git push }
-    function gl { git pull }
-    function gm { git merge }
+    Set-Alias -Name g -Value git
+    # function gcl ([string]$url) { git clone "$url" }
+    # function gs { git status }
+    # function gd { git diff }
+    # function ga { git add $args }
+    # function gall { git add -A }
+    # Remove-Item alias:gcm -Force -ErrorAction SilentlyContinue
+    # function gcm ([string]$commitmsg) { git commit -m "$commitmsg" }
+    # function gac ([string]$commitmsg) {
+    #     git add -A
+    #     git commit -m "$commitmsg"
+    # }
+    # Remove-Item alias:gp -Force -ErrorAction SilentlyContinue
+    # function gp { git push }
+    # function gl { git pull }
+    # function gm { git merge }
 }
 
 # Use exa
@@ -75,3 +76,8 @@ if (Get-Command "exa" -errorAction SilentlyContinue) {
         }
     }
 }
+
+# Remove curl and wget aliases
+# I don't want Invoke-WebRequest when entering curl!
+Remove-Item alias:curl -Force -ErrorAction SilentlyContinue
+Remove-Item alias:wget -Force -ErrorAction SilentlyContinue
