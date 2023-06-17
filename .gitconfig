@@ -1,17 +1,18 @@
 [core]
 	editor = code
 [alias]
-	a = add
-	all = add -A
+    a = add
+    all = add -A
     s = status
     st = status
     d = diff
     di = diff
     cm = commit -m
-	cl = clone
+    cl = clone
     p = push
-	ps = push
-	pl = pull
-	co = checkout
+    ps = push
+    l = pull
+    pl = pull
+    co = checkout
     br = branch
     m = merge
