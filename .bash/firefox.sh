@@ -1,6 +1,8 @@
 # Export required variables if nvidia-vaapi-driver is installed.
 # See: https://github.com/elFarto/nvidia-vaapi-driver
-if [ -x "$(command -v exa)" ] && dnf list installed nvidia-vaapi-driver --quiet &>/dev/null; then
+
+# if [ -x "$(command -v dnf)" ] && dnf list installed nvidia-vaapi-driver --quiet &>/dev/null; then
+if [ -f "/usr/lib64/dri/nvidia_drv_video.so" ] || [ -f "/usr/lib/x86_64-linux-gnu/dri/nvidia_drv_video.so" ]; then
     # The driver requires that Firefox uses the EGL backend.
     export MOZ_X11_EGL=1
     # The direct backend is currently required on NVIDIA driver series 525 due to a regression.
@@ -9,4 +11,6 @@ if [ -x "$(command -v exa)" ] && dnf list installed nvidia-vaapi-driver --quiet 
     export MOZ_DISABLE_RDD_SANDBOX=1
     # This forces libva to load the nvidia backend.
     export LIBVA_DRIVER_NAME=nvidia
+    # Required on FF98+ when running on Wayland, due to a regression that has been introduced.
+    [ "$XDG_SESSION_TYPE" == "wayland" ] && export EGL_PLATFORM=wayland
 fi
