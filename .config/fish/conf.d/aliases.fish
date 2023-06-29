@@ -49,6 +49,11 @@ if command -sq git
     # alias gm="git merge"
 end
 
+# "Fixing" npm
+if command -sq npm && command -sq node
+    alias npm="node --dns-result-order=ipv4first $(which npm)"
+end
+
 
 switch "(uname -sr)"
     # WSL specific:

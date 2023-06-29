@@ -51,6 +51,11 @@ if [ -x "$(command -v git)" ]; then
     # alias gm="git merge"
 fi
 
+# "Fixing" npm
+if [ -x "$(command -v npm)" ] && [ -x "$(command -v node)" ]; then
+    alias npm="node --dns-result-order=ipv4first $(which npm)"
+fi
+
 
 case "$(uname -sr)" in
     # WSL specific:
