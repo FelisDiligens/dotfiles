@@ -50,7 +50,7 @@ XTerm*eightBitInput: false
 
 ! special
 XTerm*foreground: #FFFFFF
-XTerm*background: #000000
+XTerm*background: #111111
 XTerm*cursorColor: #E5E5E5
 
 ! black
