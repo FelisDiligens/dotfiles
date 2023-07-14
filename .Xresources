@@ -28,7 +28,7 @@ XTerm*renderFont: True
 ! Right hand side scrollbar
 XTerm*scrollBar: true
 XTerm*rightScrollBar: true
-XTerm*scrollBar.width: 8
+XTerm*scrollbar.width: 8
 
 ! Looks
 XTerm*shapeStyle: Rectangle
