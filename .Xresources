@@ -1,0 +1,85 @@
+! XTerm configuration
+! Run `xrdb -merge ~/.Xresources` in a terminal to apply config.
+
+! Resources:
+! https://wiki.archlinux.org/title/Xterm
+! https://www.xfree86.org/4.0/xterm.1.html
+! https://gist.github.com/taviso/a4543b1752fba55017e8fcc2fe052c0a
+
+! <- An exclamation mark starts a comment
+
+! Colors!
+XTerm.termName: xterm-256color
+*customization: -color
+
+! Window size and padding
+XTerm*geometry: 110x32
+XTerm*internalBorder: 10
+
+! 16 times the history:
+XTerm*saveLines: 16384
+
+! Better font
+! XTerm*faceName: Source Code Pro
+XTerm*faceName: FiraCode Nerd Font
+XTerm*faceSize: 12
+XTerm*renderFont: True
+
+! Right hand side scrollbar
+XTerm*scrollBar: true
+XTerm*rightScrollBar: true
+XTerm*scrollBar.width: 8
+
+! Looks
+XTerm*shapeStyle: Rectangle
+XTerm*cursorBlink: false
+
+! Behavior
+! Make 'Alt' key behave as on other terminal emulators
+XTerm*metaSendsEscape: true
+! Fix the backspace key
+XTerm*backarrowKey: false
+XTerm.ttyModes: erase ^?
+
+XTerm*allowMouseOps: false
+XTerm*highlightSelection: true
+XTerm*eightBitInput: false
+
+! Theme
+! See https://terminal.sexy/ for customization
+
+! special
+XTerm*foreground: #FFFFFF
+XTerm*background: #000000
+XTerm*cursorColor: #E5E5E5
+
+! black
+XTerm*color0: #000000
+XTerm*color8: #686868
+
+! red
+XTerm*color1: #C91B00
+XTerm*color9: #FF6E67
+
+! green
+XTerm*color2: #00C200
+XTerm*color10: #5FFA68
+
+! yellow
+XTerm*color3: #C7C400
+XTerm*color11: #FFFC67
+! blue
+XTerm*color4: #2225C4
+XTerm*color12: #6871FF
+
+! magenta
+XTerm*color5: #CA30C7
+XTerm*color13: #FF77FF
+
+! cyan
+XTerm*color6: #00C5C7
+XTerm*color14: #60FDFF
+
+! white
+XTerm*color7: #FFFFFF
+XTerm*color15: #FFFFFF
