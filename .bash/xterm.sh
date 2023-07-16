@@ -1,3 +1,3 @@
 #!/bin/bash
 
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f ~/.Xresources ]] && [ -x "$(command -v xrdb)" ] && xrdb -merge ~/.Xresources
