@@ -6,6 +6,9 @@
 # ~/.local/bin
 [[ -d "$HOME/.local/bin" ]] && export PATH=$PATH:$HOME/.local/bin
 
+# ~/go/bin
+[[ -d "$HOME/go/bin" ]] && export PATH=$PATH:$HOME/go/bin
+
 # npm
 [[ -d "$HOME/.npm-global/bin" ]] && export PATH=$PATH:$HOME/.npm-global/bin
 
