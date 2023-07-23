@@ -4,6 +4,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias md='mkdir'
+alias rd='rmdir'
 
 
 # Typical aliases:
@@ -20,13 +22,11 @@ if command -sq exa
     alias tree='exa --icons --tree'
 end
 
-alias md='mkdir'
-alias rd='rmdir'
-
 
 # Miscellaneous aliases:
 if command -sq vim; alias vi=vim; end
 if command -sq neowofetch; alias neofetch=neowofetch; end
+if command -sq python3; alias python=python3; end
 
 # Colored "cat"
 if command -sq pygmentize; alias ccat='pygmentize -g'; end # -O linenos=1
@@ -37,17 +37,10 @@ if command -sq batcat; alias bat=batcat; end # batcat -> bat (https://github.com
 # Git aliases:
 if command -sq git
     alias g="git"
-    # alias gcl="git clone"
-    # alias gs="git status"
-    # alias gd="git diff"
-    # alias ga="git add"
-    # alias gall="git add -A"
-    # alias gcm="git commit -m"
-    # alias gac="git add -A && git commit -m" # + commit message
-    # alias gp="git push"
-    # alias gl="git pull"
-    # alias gm="git merge"
 end
+
+# openSUSE:
+if command -sq zypper; alias zyp=zypper; end
 
 # "Fixing" npm
 if command -sq npm && command -sq node
