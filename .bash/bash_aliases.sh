@@ -12,6 +12,8 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alFh --group-directories-first'
 alias la='ls -A --group-directories-first'
 alias l='ls -CF'
+alias md='mkdir'
+alias rd='rmdir'
 
 # exa (https://github.com/ogham/exa)
 if [ -x "$(command -v exa)" ]; then
@@ -22,13 +24,11 @@ if [ -x "$(command -v exa)" ]; then
     alias tree='exa --icons --tree'
 fi
 
-alias md='mkdir'
-alias rd='rmdir'
-
 
 # Miscellaneous aliases:
 [ -x "$(command -v vim)" ] && alias vi=vim
 [ -x "$(command -v neowofetch)" ] && alias neofetch=neowofetch
+[ -x "$(command -v python3)" ] && alias python=python3
 
 # Colored "cat"
 [ -x "$(command -v pygmentize)" ] && alias ccat='pygmentize -g' # -O linenos=1
@@ -39,17 +39,10 @@ alias rd='rmdir'
 # Git aliases:
 if [ -x "$(command -v git)" ]; then
     alias g="git"
-    # alias gcl="git clone"
-    # alias gs="git status"
-    # alias gd="git diff"
-    # alias ga="git add"
-    # alias gall="git add -A"
-    # alias gcm="git commit -m"
-    # alias gac="git add -A && git commit -m" # + commit message
-    # alias gp="git push"
-    # alias gl="git pull"
-    # alias gm="git merge"
 fi
+
+# openSUSE
+[ -x "$(command -v zypper)" ] && alias zyp=zypper
 
 # "Fixing" npm
 if [ -x "$(command -v npm)" ] && [ -x "$(command -v node)" ]; then
