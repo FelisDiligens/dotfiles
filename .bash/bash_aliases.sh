@@ -41,8 +41,10 @@ if [ -x "$(command -v git)" ]; then
     alias g="git"
 fi
 
-# openSUSE
+# Package managers:
 [ -x "$(command -v zypper)" ] && alias zyp=zypper
+[ -x "$(command -v pacman)" ] && alias pac=pacman
+[ -x "$(command -v apt-yay)" ] && alias ayay=apt-yay
 
 # "Fixing" npm
 if [ -x "$(command -v npm)" ] && [ -x "$(command -v node)" ]; then

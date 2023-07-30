@@ -39,8 +39,10 @@ if command -sq git
     alias g="git"
 end
 
-# openSUSE:
+# Package managers:
 if command -sq zypper; alias zyp=zypper; end
+if command -sq pacman; alias pac=pacman; end
+if command -sq apt-yay; alias ayay=apt-yay; end
 
 # "Fixing" npm
 if command -sq npm && command -sq node
