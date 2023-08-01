@@ -11,6 +11,7 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
+$status\
 $cmd_duration\
 $line_break\
 $env_var """ # $character
@@ -47,7 +48,7 @@ openSUSE = " "
 SUSE = " "
 Arch = " "
 Manjaro = " "
-EndeavourOS = " "
+EndeavourOS = "  "
 Garuda = "﯑ "
 Gentoo = " "
 Unknown = " "
@@ -95,4 +96,15 @@ style = "white"
 variable = "SHELL_PROMPT_CHAR"
 format = "[$env_value]($style)"
 default = "$"
-disabled=false
+disabled = false
+
+[status]
+style = 'fg:red'
+format = '[$symbol ]($style)'
+symbol = ' ' # ❌
+not_executable_symbol = '🚫' # 🚫
+not_found_symbol = ' ' #  🔍
+sigint_symbol = ' ' #  🧱
+signal_symbol = '󱐋' # ⚡
+map_symbol = true
+disabled = false
