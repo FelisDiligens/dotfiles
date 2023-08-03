@@ -40,9 +40,10 @@ if command -sq git
 end
 
 # Package managers:
+if command -sq flatpak; alias flat=flatpak; end
 if command -sq zypper; alias zyp=zypper; end
 if command -sq pacman; alias pac=pacman; end
-if command -sq apt-yay; alias ayay=apt-yay; end
+if command -sq apt-yay; alias ay=apt-yay; end
 
 # "Fixing" npm
 if command -sq npm && command -sq node
