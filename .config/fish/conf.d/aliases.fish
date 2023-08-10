@@ -50,6 +50,14 @@ if command -sq npm && command -sq node
     alias npm="node --dns-result-order=ipv4first $(which npm)"
 end
 
+# snap packages
+if command -sq snap
+    alias lsblk="lsblk -e 7"
+    if snap list | grep -q -E "clipboard.*bachatero"
+        alias cb="snap run clipboard"
+    end
+end
+
 
 switch "(uname -sr)"
     # WSL specific:
