@@ -6,7 +6,7 @@ fi
 
 if [ -x "$(command -v convert)" ]; then
     function make-ico {
-        if [ $1 == *.svg ]; then
+        if [[ "$1" == *.svg ]]; then
             # "-background transparent":                  Keep transparency instead of making the background white
             # "-size 1024x1024":                          Tell ImageMagick to draw the vector image onto a 1024px wide canvas
             # "-gravity center -extent 1024x1024":        Extend the canvas to a square

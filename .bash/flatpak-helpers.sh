@@ -13,13 +13,13 @@ if [ -x "$(command -v flatpak)" ]; then
 
     # Greps matching application identifier
     function flatfind {
-        flatlist | grep -i -F $1
+        flatlist | grep -i -F "$1"
     }
 
     # Runs first match
     # (I'm way too lazy to enter the entire identifier!)
     function flatrun {
-        flatpak run "$(flatlist | grep -i -F -m 1 $1)"
+        flatpak run "$(flatlist | grep -i -F -m 1 "$1")"
     }
 
 fi

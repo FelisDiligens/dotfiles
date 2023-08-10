@@ -49,7 +49,15 @@ fi
 
 # "Fixing" npm
 if [ -x "$(command -v npm)" ] && [ -x "$(command -v node)" ]; then
-    alias npm="node --dns-result-order=ipv4first $(which npm)"
+    alias npm='node --dns-result-order=ipv4first $(which npm)'
+fi
+
+# snap packages
+if [ -x "$(command -v snap)" ]; then
+    alias lsblk="lsblk -e 7"
+    if snap list | grep -q -E "clipboard.*bachatero"; then
+        alias cb="snap run clipboard"
+    fi
 fi
 
 

@@ -8,13 +8,13 @@ case "$(uname -sr)" in
         if [ -x "$(command -v lsb_release)" ]; then
             export SHELLNAME="$(lsb_release -is)"
         elif [ -f "/etc/os-release" ]; then
-            export SHELLNAME="$(cat /etc/os-release | grep -e "^NAME=" | sed 's/NAME=\"\(.*\)\"/\1/')"
+            export SHELLNAME="$(grep -e "^NAME=" "/etc/os-release" | sed 's/NAME=\"\(.*\)\"/\1/')"
         else
             export SHELLNAME="$(uname -o)"
         fi
         ;;
     CYGWIN*) export SHELLNAME="Cygwin";;
-    MINGW*|MINGW32*|MSYS*) export SHELLNAME="MSYS2";;
+    MINGW*|MSYS*) export SHELLNAME="MSYS2";;
     Darwin*) export SHELLNAME="macOS";;
     *) export SHELLNAME="$(uname -o)";;
 esac
@@ -28,7 +28,7 @@ case "$(uname -sr)" in
             export SHELL_PROMPT_CHAR="#"
         fi
         ;;
-    CYGWIN*|MINGW*|MINGW32*|MSYS*)
+    CYGWIN*|MINGW*|MSYS*)
         # Are we admin?
         net session > /dev/null 2>&1
         if [ $? -eq 0 ]; then
