@@ -15,6 +15,8 @@ alias l='ls -CF'
 alias md='mkdir'
 alias rd='rmdir'
 
+alias xo="xdg-open"
+
 # exa (https://github.com/ogham/exa)
 if [ -x "$(command -v exa)" ]; then
     alias ls='exa --icons'

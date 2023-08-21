@@ -13,6 +13,8 @@ alias ll='ls -alFh --group-directories-first'
 alias la='ls -A --group-directories-first'
 alias l='ls -CF'
 
+alias xo='xdg-open'
+
 # exa (https://github.com/ogham/exa)
 if command -sq exa
     alias ls='exa --icons'
