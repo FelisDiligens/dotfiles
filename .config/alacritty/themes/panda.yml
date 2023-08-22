@@ -1,0 +1,33 @@
+# https://github.com/kdnk/alacritty-panda/tree/master
+colors:
+  # Default colors
+  primary:
+    background: '#1D1E20'
+    foreground: '#eaeaea'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '#000000'
+    cursor: '#ffffff'
+
+  # Normal colors
+  normal:
+    black:   '#3d3e40'
+    red:     '#FF2C6D'
+    green:   '#19f9d8'
+    yellow:  '#FFB86C'
+    blue:    '#45A9F9'
+    magenta: '#FF75B5'
+    cyan:    '#19f9d8'
+    white:   '#f3f3f3'
+
+  # Bright colors
+  bright:
+    black:   '#373b41'
+    red:     '#ff3334'
+    green:   '#41fadf'
+    yellow:  '#ffcc95'
+    blue:    '#6FC1FF'
+    magenta: '#ff9ecb'
+    cyan:    '#41fadf'
+    white:   '#f8f8f8'
