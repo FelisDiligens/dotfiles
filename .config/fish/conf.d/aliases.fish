@@ -60,6 +60,13 @@ if command -sq snap
     end
 end
 
+# Flatpak packages
+if command -sq flatpak
+    if flatpak list --columns=application | grep -q "org.wezfurlong.wezterm"
+        alias wezterm="flatpak run org.wezfurlong.wezterm"
+    end
+end
+
 
 switch "(uname -sr)"
     # WSL specific:

@@ -62,6 +62,13 @@ if [ -x "$(command -v snap)" ]; then
     fi
 fi
 
+# Flatpak packages
+if [ -x "$(command -v flatpak)" ]; then
+    if flatpak list --columns=application | grep -q "org.wezfurlong.wezterm"; then
+        alias cb="flatpak run org.wezfurlong.wezterm"
+    fi
+fi
+
 
 case "$(uname -sr)" in
     # WSL specific:
