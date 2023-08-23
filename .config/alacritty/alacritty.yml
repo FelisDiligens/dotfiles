@@ -23,5 +23,13 @@ cursor:
   blink_interval: 500
   unfocused_hollow: true
 
+key_bindings:
+  - { key: PageUp,                action: ScrollPageUp   }
+  - { key: PageDown,              action: ScrollPageDown }
+  - { key: PageUp,   mods: Shift, action: ScrollLineUp   }
+  - { key: PageDown, mods: Shift, action: ScrollLineDown }
+  - { key: Home,     mods: Shift, action: ScrollToTop   }
+  - { key: End,      mods: Shift, action: ScrollToBottom }
+
 import:
   - ~/.config/alacritty/themes/panda.yml
