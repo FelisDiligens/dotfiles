@@ -19,18 +19,19 @@ font_size = 11.0 -- points, not pixels
 config.initial_cols = 110
 config.initial_rows = 30
 config.window_padding = {
-    left = 8,
-    right = 8,
-    top = 8,
-    bottom = 8,
+  left = "10px",
+  right = "10px",
+  top = "2px",
+  bottom = "8px",
 }  
 
 config.default_cursor_style = 'BlinkingBlock'
 config.cursor_blink_rate = 500
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
+config.force_reverse_video_cursor = true
 
-config.default_prog = { 'fish' }
+config.default_prog = { '/usr/bin/fish' }
 
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- config.integrated_title_button_style = "Gnome" -- "Windows"
