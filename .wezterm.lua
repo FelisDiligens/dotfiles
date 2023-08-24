@@ -62,13 +62,6 @@ elseif get_os() == "Linux" then
   -- config.default_prog = { '/bin/zsh' }
 end
 
--- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
--- config.integrated_title_button_style = "Gnome" -- "Windows"
-config.tab_bar_at_bottom = true
--- config.use_fancy_tab_bar = false
--- config.tab_max_width = 200
-config.hide_tab_bar_if_only_one_tab = true
-
 config.window_close_confirmation = 'NeverPrompt'
 
 
@@ -122,44 +115,80 @@ config.keys = {
 }
 
 
--- config.window_frame = {
---   active_titlebar_bg = custom_color_scheme.background,
---   inactive_titlebar_bg = custom_color_scheme.background
--- }
-config.window_frame = {
-  active_titlebar_bg = custom_color_scheme.background,
-  inactive_titlebar_bg = custom_color_scheme.background,
-  --font = config.font,
-}
-config.colors = {
-  tab_bar = {
-    background = custom_color_scheme.background,
-    inactive_tab_edge = custom_color_scheme.background,
-    active_tab = {
-      bg_color = "#000000",
-      fg_color = '#c0c0c0',
+if get_os() == "Windows" then
+  config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+  config.window_frame = {
+    active_titlebar_bg = "#333333",
+    inactive_titlebar_bg = "#333333",
+    font_size = 12.0
+  }
+  config.colors = {
+    tab_bar = {
+      background = "#333333",
+      inactive_tab_edge = "#333333",
+      active_tab = {
+        bg_color = custom_color_scheme.background,
+        fg_color = '#c0c0c0',
+      },
+      inactive_tab = {
+        bg_color = "#333333",
+        fg_color = '#808080',
+      },
+      inactive_tab_hover = {
+        bg_color = '#111111',
+        fg_color = '#808080',
+        italic = false,
+      },
+      new_tab = {
+        bg_color = "#333333",
+        fg_color = '#808080',
+      },
+      new_tab_hover = {
+        bg_color = custom_color_scheme.background,
+        fg_color = '#c0c0c0',
+        italic = false,
+      },
     },
-    inactive_tab = {
-      bg_color = custom_color_scheme.background,
-      fg_color = '#808080',
+  }
+elseif get_os() == "Linux" then
+  config.tab_bar_at_bottom = true
+  config.hide_tab_bar_if_only_one_tab = true
+  -- config.integrated_title_button_style = "Gnome"
+  -- config.use_fancy_tab_bar = false
+  -- config.tab_max_width = 200
+  config.window_frame = {
+    active_titlebar_bg = custom_color_scheme.background,
+    inactive_titlebar_bg = custom_color_scheme.background,
+  }
+  config.colors = {
+    tab_bar = {
+      background = custom_color_scheme.background,
+      inactive_tab_edge = custom_color_scheme.background,
+      active_tab = {
+        bg_color = "#000000",
+        fg_color = '#c0c0c0',
+      },
+      inactive_tab = {
+        bg_color = custom_color_scheme.background,
+        fg_color = '#808080',
+      },
+      inactive_tab_hover = {
+        bg_color = '#111111',
+        fg_color = '#808080',
+        italic = false,
+      },
+      new_tab = {
+        bg_color = custom_color_scheme.background,
+        fg_color = '#808080',
+      },
+      new_tab_hover = {
+        bg_color = "#111111",
+        fg_color = '#c0c0c0',
+        italic = false,
+      },
     },
-    inactive_tab_hover = {
-      bg_color = '#111111',
-      fg_color = '#808080',
-      italic = false,
-    },
-    new_tab = {
-      bg_color = custom_color_scheme.background,
-      fg_color = '#808080',
-    },
-    new_tab_hover = {
-      bg_color = "#111111",
-      fg_color = '#c0c0c0',
-      italic = false,
-    },
-  },
-}
-
+  }
+end
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
