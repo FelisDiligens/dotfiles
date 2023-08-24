@@ -2,45 +2,35 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$username\
-[@](fg:#aaaaaa)\
-$hostname \
-[\uE0B6](fg:#088BB2)\
+$username[@](green)$hostname \
 $os\
 $shell\
-[\uE0B4](fg:#088BB2) \
-[\uE0B6](fg:#FDAA5A)\
 $directory\
-[\uE0B4](fg:#FDAA5A) \
-([\uE0B6](fg:#96275c)\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-[\uE0B4](fg:#96275c))\
-$fill\
 $status\
 $cmd_duration\
 $line_break\
 $env_var """ # $character
 
 [username]
-style_user = "fg:#cccccc"
-style_root = "fg:red bold"
+style_user = "green"
+style_root = "green bold"
 format = "[$user]($style)"
 disabled = false
 show_always = true
 
 [hostname]
-style = "fg:#cccccc"
+style = "green"
 format = '[$hostname]($style)'
 ssh_only = false
 disabled = false
 
 [os]
-style = "fg:white bg:#088BB2"
-format = '[$symbol]($style)'
+style = "purple"
 disabled = false
 
 [os.symbols]
@@ -64,7 +54,7 @@ Gentoo = " "
 Unknown = " "
 
 [shell]
-style = "fg:white bg:#088BB2"
+style = "blue"
 format = '[$indicator ]($style)'
 bash_indicator = ""
 powershell_indicator = "" # 󰨊
@@ -73,7 +63,7 @@ fish_indicator = "" # "󰈺"
 disabled = false
 
 [directory]
-style = "fg:black bg:#FDAA5A"
+style = "yellow"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -95,21 +85,22 @@ use_os_path_sep = false
 "OneDrive" = " " # 󰏊
 
 [git_branch]
-style = 'fg:white bg:#96275c'
 symbol = ""
-format = '[ $symbol $branch]($style)'
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = 'fg:white bg:#96275c'
-format = '[ $all_status$ahead_behind ]($style)'
+format = '[$all_status$ahead_behind ]($style)'
 
-[cmd_duration]
-format = '[  $duration]($style)'
+[env_var.SHELL_PROMPT_CHAR]
+style = "white"
+variable = "SHELL_PROMPT_CHAR"
+format = "[$env_value]($style)"
+default = "$"
+disabled = false
 
 [status]
 style = 'fg:red'
 format = '[$symbol ]($style)'
-success_symbol = '[✔](fg:green)'
 symbol = ' ' # ❌
 not_executable_symbol = '🚫' # 🚫
 not_found_symbol = ' ' #  🔍
@@ -118,12 +109,5 @@ signal_symbol = '󱐋' # ⚡
 map_symbol = true
 disabled = false
 
-[env_var.SHELL_PROMPT_CHAR]
-style = "white bold"
-variable = "SHELL_PROMPT_CHAR"
-format = "[$env_value]($style)"
-default = "$"
-disabled = false
-
-[fill]
-symbol = ' '
+[cmd_duration]
+format = '[  $duration]($style)'

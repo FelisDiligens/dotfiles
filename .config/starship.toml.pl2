@@ -1,46 +1,33 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Preset: https://starship.rs/presets/pastel-powerline.html
+
+# Half circle opening: \uE0B6 
+# Half circle closing: \uE0B4
+# Triangle pointing right: \uE0B0 
+# Triangle pointing left: \uE0B2 
+# Full box: █
 format = """
-$username\
-[@](fg:#aaaaaa)\
-$hostname \
-[\uE0B6](fg:#088BB2)\
+[█](#088BB2)\
 $os\
 $shell\
-[\uE0B4](fg:#088BB2) \
-[\uE0B6](fg:#FDAA5A)\
+$username\
+[](bg:#585A59 fg:#088BB2)\
 $directory\
-[\uE0B4](fg:#FDAA5A) \
-([\uE0B6](fg:#96275c)\
+[](fg:#585A59 bg:#ad7b4c)\
 $git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
 $git_status\
-[\uE0B4](fg:#96275c))\
+[](fg:#ad7b4c)\
 $fill\
-$status\
+([](fg:#000000)\
 $cmd_duration\
+$status)\
 $line_break\
-$env_var """ # $character
-
-[username]
-style_user = "fg:#cccccc"
-style_root = "fg:red bold"
-format = "[$user]($style)"
-disabled = false
-show_always = true
-
-[hostname]
-style = "fg:#cccccc"
-format = '[$hostname]($style)'
-ssh_only = false
-disabled = false
+$env_var """ # ❯
 
 [os]
-style = "fg:white bg:#088BB2"
-format = '[$symbol]($style)'
+style = "bg:#088BB2"
 disabled = false
 
 [os.symbols]
@@ -64,8 +51,8 @@ Gentoo = " "
 Unknown = " "
 
 [shell]
-style = "fg:white bg:#088BB2"
 format = '[$indicator ]($style)'
+style = "bg:#088BB2"
 bash_indicator = ""
 powershell_indicator = "" # 󰨊
 cmd_indicator = ""
@@ -73,11 +60,10 @@ fish_indicator = "" # "󰈺"
 disabled = false
 
 [directory]
-style = "fg:black bg:#FDAA5A"
+style = "bg:#585A59"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
-read_only = " "
 use_os_path_sep = false
 
 [directory.substitutions]
@@ -95,22 +81,19 @@ use_os_path_sep = false
 "OneDrive" = " " # 󰏊
 
 [git_branch]
-style = 'fg:white bg:#96275c'
 symbol = ""
-format = '[ $symbol $branch]($style)'
+style = "bg:#ad7b4c"
+format = '[  $symbol $branch ]($style)'
 
 [git_status]
-style = 'fg:white bg:#96275c'
-format = '[ $all_status$ahead_behind ]($style)'
-
-[cmd_duration]
-format = '[  $duration]($style)'
+style = "bg:#ad7b4c"
+format = '[$all_status$ahead_behind ]($style)'
 
 [status]
-style = 'fg:red'
-format = '[$symbol ]($style)'
-success_symbol = '[✔](fg:green)'
-symbol = ' ' # ❌
+style = 'fg:#FB055A bg:#000000'
+format = '[ $maybe_int $symbol ]($style)'
+symbol = '' #  ✘ ❌
+success_symbol = '[✔](fg:#26FFD4 bg:#000000)'
 not_executable_symbol = '🚫' # 🚫
 not_found_symbol = ' ' #  🔍
 sigint_symbol = ' ' #  🧱
@@ -118,12 +101,16 @@ signal_symbol = '󱐋' # ⚡
 map_symbol = true
 disabled = false
 
+[cmd_duration]
+style = 'fg:yellow bold bg:#000000'
+format = '[ $duration  ]($style)'
+
+[fill]
+symbol = ' '
+
 [env_var.SHELL_PROMPT_CHAR]
-style = "white bold"
+style = "white"
 variable = "SHELL_PROMPT_CHAR"
 format = "[$env_value]($style)"
 default = "$"
 disabled = false
-
-[fill]
-symbol = ' '
