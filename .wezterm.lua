@@ -8,10 +8,25 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+function get_os()
+  if string.match(wezterm.target_triple, "%-pc%-windows%-") then
+    return "Windows"
+  elseif string.match(wezterm.target_triple, "%-apple%-darwin$") then
+    return "macOS"
+  elseif string.match(wezterm.target_triple, "%-unknown%-linux%-") then
+    return "Linux"
+  end
+  return "Unknown"
+end
+
 -- This is where you actually apply your config choices:
 config.enable_scroll_bar = true
 
-config.font = wezterm.font_with_fallback { 'FiraCode Nerd Font', 'FiraCode NF' }
+if get_os() == "Windows" then
+  config.font = wezterm.font_with_fallback { 'FiraCode NF', 'FiraCode Nerd Font' }
+elseif get_os() == "Linux" then
+  config.font = wezterm.font_with_fallback { 'FiraCode Nerd Font', 'FiraCode NF' }
+end
 font_size = 11.0 -- points, not pixels
 
 config.initial_cols = 110
@@ -39,9 +54,13 @@ config.cursor_blink_rate = 500
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
 
-config.default_prog = { '/usr/bin/fish' }
--- config.default_prog = { '/bin/bash' }
--- config.default_prog = { '/bin/zsh' }
+if get_os() == "Windows" then
+  config.default_prog = { 'C:\\cygwin64\\bin\\fish.exe' }
+elseif get_os() == "Linux" then
+  config.default_prog = { '/usr/bin/fish' }
+  -- config.default_prog = { '/bin/bash' }
+  -- config.default_prog = { '/bin/zsh' }
+end
 
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- config.integrated_title_button_style = "Gnome" -- "Windows"
