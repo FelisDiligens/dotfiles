@@ -104,6 +104,7 @@ style = 'fg:white bg:#96275c'
 format = '[ $all_status$ahead_behind ]($style)'
 
 [cmd_duration]
+style = 'fg:#FDAA5A'
 format = '[  $duration]($style)'
 
 [status]
@@ -119,7 +120,7 @@ map_symbol = true
 disabled = false
 
 [env_var.SHELL_PROMPT_CHAR]
-style = "white bold"
+style = "fg:#ffffff bold"
 variable = "SHELL_PROMPT_CHAR"
 format = "[$env_value]($style)"
 default = "$"
