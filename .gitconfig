@@ -4,15 +4,31 @@
     a = add
     all = add -A
     s = status
-    st = status
     d = diff
-    di = diff
+    dt = difftool
+    l = log
+    #                                   hash                   author                   date            message          head
+    l1 = log --pretty=format:"%C(yellow)%h%C(reset)%x20%C(blue)%an%C(reset)%x09%C(green)%ad%C(reset)%x09%s%x20%C(magenta)%d%C(reset)" --date=relative --color=always
     cm = commit -m
     cl = clone
     p = push
-    ps = push
-    l = pull
     pl = pull
-    co = checkout
-    br = branch
+    ch = checkout
+    b = branch
     m = merge
+    mt = mergetool
+[merge]
+    tool = meld
+    guitool = meld
+[mergetool]
+    prompt = false # skip prompts
+    keepBackup = false # deletes *.orig file after merge
+[mergetool "meld"]
+    cmd = /usr/bin/meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" # --auto-merge
+    trustExitCode = true # we can trust meld
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
