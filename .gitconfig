@@ -13,7 +13,7 @@
     cl = clone
     p = push
     pl = pull
-    ch = checkout
+    co = checkout
     b = branch
     m = merge
     mt = mergetool
