@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export EDITOR="vim"
+export VISUAL="vim"
+
 # For 'sudoedit':
 [ -x "$(command -v vim)" ] && export EDITOR="vim" && export VISUAL="vim"
 
