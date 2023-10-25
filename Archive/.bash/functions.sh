@@ -2,14 +2,14 @@
 
 # mkdir & chdir:
 # Source: https://unix.stackexchange.com/a/125386
-mcd()
+mcd ()
 {
     mkdir -p -- "$1" &&
        cd -P -- "$1"
 }
 
 # This function emulates the "START" command found in Windows' CMD.exe:
-start() {
+function start {
     local cmd=""
     while (( $# > 0 )); do
         cmd="$cmd $1"
@@ -21,7 +21,7 @@ start() {
 
 case "$(uname -sr)" in
     Linux*WSL2*)
-        wcd()
+        function wcd ()
         {
             if [ -d "$1" ]; then
                 cd "$1"
@@ -31,7 +31,7 @@ case "$(uname -sr)" in
         }
     ;;
     CYGWIN*|MINGW*|MSYS*)
-        wcd()
+        function wcd ()
         {
             cd $(cygpath -u "$1")
         }
