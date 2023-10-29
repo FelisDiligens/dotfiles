@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # If starship (fancy shell prompt) is installed, use that instead:
 # (only enable starship when in interactive mode and in a terminal emulator)
 # Terminal emulators:        xterm, xterm-color, or xterm-256color

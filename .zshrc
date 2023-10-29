@@ -15,8 +15,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="robbyrussell"
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+  ZSH_THEME="risto"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,8 +84,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git command-not-found zoxide zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 
-# source /usr/share/doc/pkgfile/command-not-found.zsh
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -113,23 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-alias md='mkdir'
-alias rd='rmdir'
-
-alias xo="xdg-open"
-
-# eza (https://github.com/eza-community/eza#readme)
-if [ -x "$(command -v exa)" ]; then
-    alias ls='exa --icons'
-    alias la='exa --icons --all --group-directories-first'
-    alias ll='exa --icons --all --long --header --group-directories-first'
-    alias l='exa --classify --icons'
-    alias tree='exa --icons --tree'
-fi
-
-alias g="git"
-
-PATH=$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.npm-global/bin:$HOME/.gem/bin
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+[ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
 #[ -s "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
