@@ -4,6 +4,7 @@ alias md='mkdir'
 alias rd='rmdir'
 alias xo="xdg-open"
 alias g="git"
+alias hx="helix"
 
 # eza (https://github.com/eza-community/eza#readme)
 if [ -x "$(command -v exa)" ]; then
