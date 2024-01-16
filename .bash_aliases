@@ -4,7 +4,6 @@ alias md='mkdir'
 alias rd='rmdir'
 alias xo="xdg-open"
 alias g="git"
-alias hx="helix"
 
 # eza (https://github.com/eza-community/eza#readme)
 if [ -x "$(command -v exa)" ]; then
@@ -18,3 +17,9 @@ else
     alias la='ls -A --group-directories-first'
     alias l='ls -CF'
 fi
+
+mcd()
+{
+    mkdir -p -- "$1" &&
+       cd -P -- "$1"
+}
