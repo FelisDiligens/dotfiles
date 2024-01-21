@@ -187,6 +187,7 @@
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232 # Default
   # typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=202 # Ubuntu-like orange
   # typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=030 # Manjaro-like cyan
+  # typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=092 # EndeavourOS purple
   typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
@@ -219,6 +220,7 @@
   typeset -g POWERLEVEL9K_DIR_BACKGROUND=4 # Default
   # typeset -g POWERLEVEL9K_DIR_BACKGROUND=166 # Ubuntu-like orange
   # typeset -g POWERLEVEL9K_DIR_BACKGROUND=030 # Manjaro-like cyan
+  # typeset -g POWERLEVEL9K_DIR_BACKGROUND=092 # EndeavourOS purple
   # Default current directory foreground color.
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=254
   # If directory is too long, shorten some of its segments to the shortest possible unique
