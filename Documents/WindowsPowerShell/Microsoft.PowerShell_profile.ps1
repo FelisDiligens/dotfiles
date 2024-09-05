@@ -18,6 +18,10 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow ForwardWord
 # Tab completion like in fish <3
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
+# Fix curl/wget shadowing:
+Remove-Item alias:curl -ErrorAction SilentlyContinue
+Remove-Item alias:wget -ErrorAction SilentlyContinue
+
 Set-Alias -Name g -Value git
 
 # mkdir && cd
@@ -53,6 +57,15 @@ function export ([string]$VariableNameAndValue) {
     $VariableName = $splitArray[0].trim()
     $Value = $splitArray[1].trim()
     Set-Item env:$VariableName -Value $Value
+}
+
+# Bash-like `touch`
+function touch ([string]$path) {
+    Write-Host $null >> $path
+}
+
+function ll ([string]$path) {
+    Get-ChildItem -Force $path
 }
 
 function IsAdmin {
