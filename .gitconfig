@@ -18,6 +18,15 @@
     b = branch
     m = merge
     mt = mergetool
+    # usage: `git identity github`; see `[user "example"]` below.
+    # https://stackoverflow.com/a/43009080
+	identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; :"
+    id = identity
+[user]
+    useConfigOnly = true
+[user "example"]
+    email = foobar@example.com
+    name = foobar
 [merge]
     tool = meld
     guitool = meld
