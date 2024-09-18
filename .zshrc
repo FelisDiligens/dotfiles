@@ -10,12 +10,15 @@ autoload -Uz compinit
 compinit
 
 # Antidote
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
-antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
+# To install: git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+if [ -d "${ZDOTDIR:-$HOME}/.antidote" ]; then
+  source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+  antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
-# Powerlevel10k
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+  # Powerlevel10k
+  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
 
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
