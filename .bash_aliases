@@ -4,6 +4,7 @@ alias md='mkdir'
 alias rd='rmdir'
 alias xo="xdg-open"
 alias g="git"
+[ -x "$(command -v batcat)" ] && alias bat="batcat"
 
 # eza (https://github.com/eza-community/eza#readme)
 if [ -x "$(command -v exa)" ]; then
