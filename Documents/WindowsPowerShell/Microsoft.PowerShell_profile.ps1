@@ -167,6 +167,54 @@ function IsAdmin {
     return $false
 }
 
+# Convert paths between Cygwin/DOS:
+function cygwin-cygpath {
+    # Get scoop or default installation path:
+    $cygwinBinPath = "C:\cygwin64\bin"
+    if (Test-Path "$env:USERPROFILE\scoop\apps\cygwin\current\root\bin") {
+        $cygwinBinPath = "$env:USERPROFILE\scoop\apps\cygwin\current\root\bin"
+    }
+
+    & "$cygwinBinPath\cygpath.exe" @args
+}
+
+# Run Cygwin Bash from PowerShell:
+function cygwin-bash {
+    param (
+        [switch]$c
+    )
+
+    # Get scoop or default installation path:
+    $cygwinBinPath = "C:\cygwin64\bin"
+    if (Test-Path "$env:USERPROFILE\scoop\apps\cygwin\current\root\bin") {
+        $cygwinBinPath = "$env:USERPROFILE\scoop\apps\cygwin\current\root\bin"
+    }
+
+    # Convert current working directory to Cygwin path:
+    $winPwd = (Get-Location).Path
+    $cygPwd = cygwin-cygpath -u "$winPwd"
+
+    if ($c) {
+        # If -c switch is given, run a command and exit:
+        $command = $args[0]
+        $bashArgs = $args[1..($args.Count)]
+        & "$cygwinBinPath\bash.exe" --login -i -c "cd '$cygPwd'; $command" @bashArgs
+    } elseif ($args.Count -eq 0) {
+        # If no arguments are given, start an interactive bash session:
+        & "$cygwinBinPath\bash.exe" --login -i -c "cd '$cygPwd'; bash"
+    } else {
+        # If a script is given, run the script and exit:
+        $scriptPath = $args[0]
+        if (Test-Path $scriptPath) {
+            $cygPath = cygwin-cygpath -u $(Resolve-Path -Relative "$scriptPath")
+            & "$cygwinBinPath\bash.exe" --login -i -c "cd '$cygPwd'; $cygPath"
+        } else {
+            # Otherwise pass arguments directly to bash:
+            & "$cygwinBinPath\bash.exe" @args
+        }
+    }
+}
+
 # Show prompt like in MSYS2/Cygwin
 # function prompt {
 #     # Colors
